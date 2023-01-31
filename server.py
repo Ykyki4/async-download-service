@@ -20,8 +20,6 @@ def arg_parser():
 
     args = parser.parse_args()
 
-    logging.basicConfig(format="%(levelname)-8s [%(asctime)s] %(message)s", level=logging.DEBUG if args.debug else logging.INFO)
-
     return args
 
 
@@ -76,6 +74,8 @@ async def handle_index_page(request):
 
 if __name__ == '__main__':
     args = arg_parser()
+    
+    logging.basicConfig(format="%(levelname)-8s [%(asctime)s] %(message)s", level=logging.DEBUG if args.debug else logging.INFO)
     
     app = web.Application()
     app.add_routes([
