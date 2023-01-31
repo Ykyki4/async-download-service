@@ -42,6 +42,12 @@ python server.py
 python server.py --help
 ```
 
+### Для запуска утилиты при помощи докера, команда:
+
+```bash
+docker-compose up
+```
+
 ## Как развернуть на сервере
 
 ```bash
