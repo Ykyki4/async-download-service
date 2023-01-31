@@ -57,11 +57,11 @@ async def archive(request, throttling, root_photos_path, chunk_size=4096):
                 await asyncio.sleep(throttling)
     except asyncio.CancelledError:
         logging.debug('Download was interrupted')
-        process.kill()  
-    except BaseException:
-        process.kill()  
     finally:
-        await process.communicate() 
+        if process.returncode is None:
+            process.kill()
+            await process.communicate()
+
         response.force_close()
                                      
     return response
